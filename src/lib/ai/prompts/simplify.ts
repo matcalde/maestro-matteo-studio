@@ -12,6 +12,11 @@ REGOLE:
 - Aggiungi sottotitoli per sezioni lunghe
 - Livello target: ${targetLevel}
 
+REGOLE LINGUISTICHE TASSATIVE:
+- Italiano corretto e naturale, concordanze sempre rispettate.
+- Se rivolgi domande o istruzioni al lettore, usa il "tu" con verbi in 2ª persona singolare (es: "leggi", "rispondi", "prova a immaginare").
+- Mai forme di cortesia "Lei".
+
 TESTO ORIGINALE:
 ${text}
 
