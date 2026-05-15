@@ -241,14 +241,29 @@ export default function ApiKeyDialog({ open, onClose }: { open: boolean; onClose
                 {show ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
               </button>
             </div>
-            <details className="text-xs">
-              <summary className="cursor-pointer text-neutral-500">Avanzato: modello</summary>
+            <div className="text-sm">
+              <span className="text-neutral-500">Modello:</span>
+              <div className="flex flex-wrap gap-2 mt-1">
+                {[
+                  { id: "llama-3.3-70b-versatile", q: "qualità top, 6k tok/min" },
+                  { id: "llama-3.1-8b-instant", q: "velocissimo, 30k tok/min" },
+                  { id: "gemma2-9b-it", q: "alternativo" },
+                ].map((m) => (
+                  <button key={m.id} type="button" onClick={() => s.setModel("groq", m.id)}
+                    className={`px-2 py-1 text-xs rounded-lg border ${s.groqModel === m.id ? "border-primary bg-primary/10 text-primary" : "border-neutral-300 dark:border-neutral-700"}`}>
+                    {m.id} <span className="opacity-60">({m.q})</span>
+                  </button>
+                ))}
+              </div>
+              <div className="text-[10px] text-neutral-500 mt-1">
+                Se 429 "rate limit", passa a <code>llama-3.1-8b-instant</code> (quota molto più alta).
+              </div>
               <input
                 value={s.groqModel}
                 onChange={(e) => s.setModel("groq", e.target.value)}
                 className="mt-2 w-full px-3 py-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-transparent font-mono text-xs"
               />
-            </details>
+            </div>
             <div className="flex gap-2 pt-2">
               <button onClick={() => save("groq")} disabled={!groq.trim()} className="btn btn-primary"><CheckCircle2 className="w-4 h-4" /> Salva e usa</button>
               <button onClick={() => test("groq")} disabled={testing || !groq.trim()} className="btn btn-outline">
