@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* OpenDyslexic self-hosted — DECISION: caricato via CDN openfontsorg fallback;
+   per uso offline, scarica i file in /public/fonts e cambia src. */
+@font-face {
+  font-family: "OpenDyslexic";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/woff/OpenDyslexic-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: "OpenDyslexic";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/woff/OpenDyslexic-Bold.woff") format("woff");
+}
+
+html, body, #root { height: 100%; }
+body {
+  @apply bg-bg-light text-neutral-900 dark:bg-bg-dark dark:text-neutral-100;
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Accessibilità lettura inclusiva */
+.read-mode {
+  font-family: "Atkinson Hyperlegible", Inter, sans-serif;
+}
+.read-mode.font-dys { font-family: "OpenDyslexic", "Atkinson Hyperlegible", sans-serif; }
+.read-mode .word-hl { background: #fde68a; border-radius: 4px; padding: 0 2px; }
+
+/* Chat bubble base */
+.bubble-user { @apply bg-primary text-white; }
+.bubble-ai { @apply bg-neutral-100 dark:bg-neutral-800; }
+
+/* Buttons */
+.btn { @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl font-medium transition; }
+.btn-primary { @apply bg-primary text-white hover:opacity-90; }
+.btn-ghost { @apply hover:bg-neutral-100 dark:hover:bg-neutral-800; }
+.btn-outline { @apply border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800; }
+
+.card { @apply bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-neutral-200/60 dark:border-neutral-800; }
+
+/* Scrollbar discreta */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { @apply bg-neutral-300 dark:bg-neutral-700 rounded; }
+
+/* Markdown */
+.prose-mm h1 { @apply text-2xl font-bold mt-4 mb-2; }
+.prose-mm h2 { @apply text-xl font-bold mt-3 mb-2; }
+.prose-mm h3 { @apply text-lg font-semibold mt-3 mb-1; }
+.prose-mm p { @apply my-2 leading-relaxed; }
+.prose-mm ul { @apply list-disc pl-6 my-2; }
+.prose-mm ol { @apply list-decimal pl-6 my-2; }
+.prose-mm code { @apply bg-neutral-200 dark:bg-neutral-800 px-1 rounded; }
+.prose-mm strong { @apply font-semibold; }

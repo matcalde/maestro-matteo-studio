@@ -1,0 +1,21 @@
+node_modules
+dist
+dist-ssr
+.DS_Store
+*.local
+.env
+.env.local
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.log
+tsconfig.tsbuildinfo
+.claude/
+
+# File personali / chiavi API utente
+API Grok.txt
+API*.txt
+*.key
+*.secret
+secrets/
+
